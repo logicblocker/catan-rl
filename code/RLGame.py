@@ -1,5 +1,5 @@
 #Settlers of Catan
-#Gameplay class with pygame with AI players
+#Gameplay class with pygame with RL agents (catan-rl)
 
 from board import *
 from gameView import *
@@ -10,11 +10,11 @@ import numpy as np
 import sys, pygame
 import matplotlib.pyplot as plt
 
-#Class to implement an only AI
-class catanAIGame():
+#Class to implement RL-only game (catan-rl)
+class catanRLGame():
     #Create new gameboard
     def __init__(self):
-        print("Initializing Settlers of Catan with only AI Players...")
+        print("Initializing Settlers of Catan with RL agents (catan-rl)...")
         self.board = catanBoard()
 
         #Game State variables
@@ -58,7 +58,7 @@ class catanAIGame():
         #Initialize new players with names and colors
         playerColors = ['black', 'darkslateblue', 'magenta4', 'orange1']
         for i in range(self.numPlayers):
-            playerNameInput = input("Enter AI Player {} name: ".format(i+1))
+            playerNameInput = input("Enter Agent {} name: ".format(i+1))
             newPlayer = heuristicAIPlayer(playerNameInput, playerColors[i])
             newPlayer.updateAI()
             self.playerQueue.put(newPlayer)
@@ -135,7 +135,7 @@ class catanAIGame():
                 print('MaxRoadLength:{}, Longest Road:{}\n'.format(player_i.maxRoadLength, player_i.longestRoadFlag))
         
         else:
-            print("AI using heuristic robber...")
+            print("Agent using heuristic robber...")
             currentPlayer.heuristic_move_robber(self.board)
 
 
@@ -205,8 +205,8 @@ class catanAIGame():
 
                 while(turnOver == False):
 
-                    #TO-DO: Add logic for AI Player to move
-                    #TO-DO: Add option of AI Player playing a dev card prior to dice roll
+                    #TO-DO: Add logic for RL agent to move
+                    #TO-DO: Add option of agent playing a dev card prior to dice roll
                     
                     #Roll Dice and update player resources and dice stats
                     pygame.event.pump()
@@ -216,8 +216,8 @@ class catanAIGame():
                     self.diceStats[diceNum] += 1
                     self.diceStats_list.append(diceNum)
 
-                    currPlayer.move(self.board) #AI Player makes all its moves
-                    #Check if AI player gets longest road and update Victory points
+                    currPlayer.move(self.board) #Agent makes all its moves
+                    #Check if agent gets longest road and update Victory points
                     self.check_longest_road(currPlayer)
                     print("Player:{}, Resources:{}, Points: {}".format(currPlayer.name, currPlayer.resources, currPlayer.victoryPoints))
                     
@@ -245,5 +245,5 @@ class catanAIGame():
                     break
                                    
 
-#Initialize new game and run
-newGame_AI = catanAIGame()
+#Initialize new game and run (catan-rl)
+newGame_RL = catanRLGame()
