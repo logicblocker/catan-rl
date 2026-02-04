@@ -1,4 +1,4 @@
-# CatanAI
+# catan-rl
 A Settlers of Catan framework built in Python with AI agents trained using Reinforcement Learning. The goal of this project is to implement full multiplayer game functionality and use MCTS and reinforcement learning to build an AI player that can effectively explore-exploit heuristic strategies.
 The GUI is implemented using ```pygame```, while the game log is currently output through the terminal to allow for easy play and testing.
 
@@ -9,7 +9,7 @@ Game functionality is implemented in the following modules:
 1. ```hexTile.py``` - Implements the hexagonal tiles for the Catan board, with a complete graph representation outline for vertices and edges. Mathematical representation easy drawing of hexagonal grids and pixel math is implemented in ```hexLib.py```, adapted from  http://www.redblobgames.com/grids/hexagons/
 2. ```board.py``` - Base class to implement the board, and board related functionality such as building roads, settlements and cities. 
 3. ```player.py``` and ```heuristicAIPlayer.py``` - Base classes to implement player functionality. The AI Player inherits the player class and enacts heuristic strategies
-4. ```catanGame.py``` and ```AIGame.py``` - Wrapper classes to interface game representation with GUI
+4. ```catanGame.py``` and ```RLGame.py``` - Wrapper classes to interface game representation with GUI
 5. ```gameView.py``` - Graphics class implemented to interface game mechanics with pygame-based GUI.
 
 
